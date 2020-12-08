@@ -43,7 +43,7 @@ const compressimages = () => {
 const convertwebp = () => {
   return gulp.src("./source/images/**/*", {base: "./source/images"})
     .pipe(webp())
-    .pipe(gulp.dest("./source/images-compressed"));  
+    .pipe(gulp.dest("./source/images"));  
 }
 
 const sprite = () => {
@@ -97,7 +97,7 @@ const sync = (done) => {
   gulp.watch("./source/fonts/**.*", gulp.series(fonts, browser.reload));
   gulp.watch("./source/images/**/*", gulp.series(images, browser.reload));
   gulp.watch("./source/images/icons/icon-*.svg", gulp.series(sprite, html, browser.reload));
-  gulp.watch("./source/scss/**/*.scss", gulp.series(scss));
+  gulp.watch("./source/scss/**/*.{scss,css}", gulp.series(scss));
   gulp.watch("./source/*.html").on("change", gulp.series(html, browser.reload));
 
   done();
