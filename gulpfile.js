@@ -21,7 +21,7 @@ const sourcemaps = require("gulp-sourcemaps");
 // --
 
 const cleanup = () => {
-  return gulp.src("./build/**/*", {read: false})
+  return gulp.src("./build/**/*.*")
     .pipe(clean());
 }
 
