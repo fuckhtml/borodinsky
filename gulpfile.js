@@ -21,7 +21,7 @@ const sourcemaps = require("gulp-sourcemaps");
 // --
 
 const cleanup = () => {
-  return gulp.src("./build/**/*", {read: false})
+  return gulp.src("./build/**/*.*")
     .pipe(clean());
 }
 
@@ -33,8 +33,13 @@ const fonts = () => {
 // --
 
 const compressimages = () => {
-  return gulp.src("./source/images/**/*", {base: "./source/images"})
-    .pipe(imagemin())
+  return gulp.src("./source/images/**/*.{jpeg,jpg,png,gif,svg}", {base: "./source/images"})
+    .pipe(imagemin([
+      imagemin.gifsicle({interlaced: true}),
+      imagemin.mozjpeg({quality: 75, progressive: true}),
+      imagemin.optipng({optimizationLevel: 5}),
+      // imagemin.svgo({plugins: [{removeViewBox: true},{cleanupIDs: false}]})
+    ]))
     .pipe(gulp.dest("./source/images"))
     .pipe(webp())
     .pipe(gulp.dest("./source/images"));
