@@ -1,0 +1,154 @@
+@import './../tools/_variables.scss';
+@import './../tools/_mixins.scss';
+
+
+//  palette | grey colors
+$palette-2-color-1: $palette-2-color-1; // #252525;
+$palette-2-color-2: $palette-2-color-2; // #292929;
+$palette-2-color-3: $palette-2-color-3; // #353535;
+$palette-2-color-4: $palette-2-color-4; // #3F3F3F;
+$palette-2-color-5: $palette-2-color-5; // #4E4E4E;
+$palette-2-color-6: $palette-2-color-6; // #777777;
+
+$color-title: white;
+$color-background: $palette-2-color-3;
+
+.stats {
+  background-color: $color-background
+}
+
+.stats__wrapper {
+  @include wrapper;
+
+  @include grid-template;
+}
+
+.stats__header {
+  padding: 28px 20px;
+
+  text-align: center;
+
+  background-color: white;
+}
+
+.stats__title {
+  margin: 0;
+  margin-bottom: 13px;
+
+  font-size: 30px;
+  line-height: 30px;
+  font-weight: 700;
+
+  color: black;
+}
+
+.stats__intro {
+  margin: 0;
+
+  font: 20px;
+  font-height: 27px;
+}
+
+.stats__legend {
+  display: none;
+
+  font-size: 20px;
+  line-height: 20px;
+  color: black;
+
+  opacity: .3;
+}
+
+.stats__list {
+  margin: 0;
+
+  color: white;
+}
+
+.stats__item {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+
+  padding: 20px;
+}
+
+.stats__item:nth-child(1) {
+  background-color: #3F3F3F;
+}
+.stats__item:nth-child(2) {
+  background-color: #4D4D4D;
+}
+.stats__item:nth-child(3) {
+  background-color: #353535;
+}
+.stats__item:nth-child(4) {
+  background-color: #4D4D4D;
+}
+
+.stats__field {  
+  text-align: right;
+
+  font-weight: 400;
+  line-height: 18px;
+}
+
+.stats__value {
+  margin-left: 0;
+
+  font-size: 40px;
+  line-height: 40px;
+  font-weight: 700;
+}
+
+@media (max-width: $mobile-width-only) {
+  .stats__legend {
+    text-align: center;
+
+    color: white;
+  }
+
+  .stats__legend--bottom {
+    display: block;
+  }
+}
+
+@media (min-width: $tablet-width) {
+  .stats__wrapper {
+    // margin-top: -186px;
+  }
+
+  .stats__legend--top {
+    display: block;
+  }
+}
+
+/*
+
+      <section class="stats">
+        <div class="stats__wrapper">
+          <header class="stats__header">
+            <h2 class="visually-hidden">Our Statistics</h2>
+            <p class="stats__title">Haircut here <br>is profitable!</p>
+            <p class="stats__intro">Man's haircut requires prescise approach. Consider our statistics.</p>
+            <p class="stats__legend  stats__legend--top">* — the given data is false</p>
+          </header>
+
+          <dl class="stats__list">
+            <dt class="stats__field">The average price</dt>
+            <dd class="stats__value">45*</dd>
+
+            <dt class="stats__field">Master's spent seconds</dt>
+            <dd class="stats__value">7 200</dd>
+
+            <dt class="stats__field">Cut hair</dt>
+            <dd class="stats__value">90 000</dd>
+
+            <dt class="stats__field">Likes and comments</dt>
+            <dd class="stats__value">500 000*</dd>
+          </dl>
+
+          <p class="stats__legend  stats__legend--bottom">* — the given data is false</p>
+        </div>
+      </section> 
+      */

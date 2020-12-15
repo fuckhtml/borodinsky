@@ -26,25 +26,26 @@ const cleanup = () => {
 }
 
 const fonts = () => {
-  return gulp.src("./source/fonts/**/*.{woff,woff2}", {base: "./source/fonts"})
+  return gulp.src("./source/fonts/**/*", {base: "./source/fonts"})
     .pipe(gulp.dest("./build/fonts"));
 }
 
 // --
 
-const compressimages = () => {
-  return gulp.src("./source/images/**/*.{jpeg,jpg,png,gif,svg}", {base: "./source/images"})
-    .pipe(imagemin([
-      imagemin.gifsicle({interlaced: true}),
-      imagemin.mozjpeg({quality: 75, progressive: true}),
-      imagemin.optipng({optimizationLevel: 5}),
-      // imagemin.svgo({plugins: [{removeViewBox: true},{cleanupIDs: false}]})
-    ]))
-    .pipe(gulp.dest("./source/images"))
-    .pipe(webp())
-    .pipe(gulp.dest("./source/images"));
-}
+// const compressimages = () => {
+//   return gulp.src("./source/images/**/*.{jpeg,jpg,png,gif,svg}", {base: "./source/images"})
+//     .pipe(imagemin([
+//       imagemin.gifsicle({interlaced: true}),
+//       imagemin.mozjpeg({quality: 75, progressive: true}),
+//       imagemin.optipng({optimizationLevel: 5}),
+//       // imagemin.svgo({plugins: [{removeViewBox: true},{cleanupIDs: false}]})
+//     ]))
+//     .pipe(gulp.dest("./source/images"))
+//     .pipe(webp())
+//     .pipe(gulp.dest("./source/images"));
+// }
 
+// How to convert without quality loss?
 const convertwebp = () => {
   return gulp.src("./source/images/**/*", {base: "./source/images"})
     .pipe(webp())
@@ -71,7 +72,8 @@ const copyimages = () => {
 const html = () => {
   return gulp.src("./source/*.html")
     .pipe(posthtml([include()]))
-    .pipe(gulp.dest("./build"));
+    .pipe(gulp.dest("./build"))
+    .pipe(browser.stream());
 }
 
 const scss = () => {
@@ -82,12 +84,18 @@ const scss = () => {
     .pipe(sass())
     .pipe(autoprefixer("last 3 versions"))
     .pipe(gulp.dest("./build/css"))
-    .pipe(csso())
-    .pipe(sourcemaps.write("."))
-    .pipe(rename("main.min.css"))
-    .pipe(gulp.dest("./build/css"))
+    .pipe(browser.stream())
 
-    .pipe(browser.stream());
+    // .pipe(csso())
+    // .pipe(sourcemaps.write("."))
+    // .pipe(rename("main.min.css"))
+    // .pipe(gulp.dest("./build/css"));
+
+}
+
+const js = () => {
+  return gulp.src("./source/js/**/*", {base: "./source/js"})
+    .pipe(gulp.dest("./build/js"));
 }
 
 // --
@@ -95,14 +103,15 @@ const scss = () => {
 const sync = (done) => {
   browser.init({
     server: {
-      baseDir: "./build"
+      baseDir: "./build",
+      proxy: "test"
     }
   })
 
   gulp.watch("./source/fonts/**.*", gulp.series(fonts, browser.reload));
-  gulp.watch("./source/images/**/*", gulp.series(images, browser.reload));
-  gulp.watch("./source/images/icons/icon-*.svg", gulp.series(sprite, html, browser.reload));
-  gulp.watch("./source/scss/**/*.{scss,css}", gulp.series(scss));
+  gulp.watch("./source/images/**/*", gulp.series(images, html, browser.reload));
+  gulp.watch("./source/js/**/*", gulp.series(js, browser.reload));
+  gulp.watch("./source/scss/**/*", gulp.series(scss));
   gulp.watch("./source/*.html").on("change", gulp.series(html, browser.reload));
 
   done();
@@ -110,10 +119,13 @@ const sync = (done) => {
 
 // --
 
-const images = gulp.series(compressimages, convertwebp, sprite, copyimages);
+const images = gulp.series(
+  //compressimages, convertwebp, 
+  sprite, copyimages
+);
 exports.images = images;
 
-const build = gulp.series(cleanup, gulp.parallel(fonts, images), html, scss);
+const build = gulp.series(cleanup, gulp.parallel(fonts, images), js, html, scss);
 exports.build = build;
 
 exports.default = gulp.series(build, sync);

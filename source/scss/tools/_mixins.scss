@@ -1,0 +1,103 @@
+@import './_variables.scss';
+
+// --
+
+@mixin reset-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+} 
+
+@mixin reset-button {
+  margin: 0;
+  padding: 0;
+
+  width: auto;
+
+  font: inherit;
+  line-height: normal;
+  color: inherit;
+
+  background: transparent;
+
+  border: none;
+  outline: none;
+
+  overflow: visible;
+}
+
+// --
+
+@mixin wrapper {
+  outline: 3px solid green;
+  margin-left: auto;
+  margin-right: auto;
+
+  box-sizing: border-box;
+  width: 100%;
+
+  @media (min-width: $tablet-width) {
+    padding-left: 20px;
+    padding-right: 20px;
+
+    width: 90%;
+    max-width: 1000px;
+  }
+
+  @media (min-width: $desktop-width) {
+    width: 1000px;
+  }
+}
+
+@mixin grid-template {
+  @media (min-width: $tablet-width) {
+    display: grid;
+
+    grid-template-cols: repeat(4, 1fr);
+  }
+
+  @media (min-width: $desktop-width) {
+    grid-template-cols: repeat(6, 1fr);
+  }
+}
+
+// --
+
+// background-image: image-set(
+//   "./../images/index-bg-tablet@1x.jpg" 1x,
+//   "./../images/index-bg-tablet@2x.jpg" 2x
+// );
+
+// CSS Pixel Density = 96DPI = 1DPPX
+
+@mixin background-image-urlset($image-url-1x, $image-url-2x, $image-url-3x: 'no-image') {
+  @media (min-resolution: 1dppx) {
+    background-image: url($image-url-1x);
+  }
+
+  @media (min-resolution: 2dppx) {
+    background-image:  url($image-url-2x);
+  }
+ 
+  @if $image-url-3x != 'no-image' {
+    @media (min-resolution: 3dppx) {
+      background-image: url($image-url-3x);
+    }
+  }
+}
+
+//--
+
+@mixin background-webp-urlset($webp-url-1x, $webp-url-2x, $webp-url-3x: 'no-image') {
+  background-image: -webkit-image-set(
+    url($webp-url-1x) 1x,
+    url($webp-url-2x) 2x
+  );
+
+  // @if $webp-url-3x != 'no-image' {
+  //   background-image: -webkit-image-set(
+  //     url($webp-url-3x) 3x
+  //   );
+  // }
+}
+

@@ -1,23 +1,146 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="page">
 
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" 
+          content="width=device-width, user-scalable=no, initial-scale=1.0">
 
     <title>Barbershop Borodinsky Official | Schedule and book your visit online</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="robots" content="">
 
-    <link rel="stylesheet" href="./css/main.min.css">
+    <link rel="preload" as="font" crossorigin="crossorigin" type="font/woff2" 
+          href="./fonts/ptsansnarrow-regular.woff2">
+    <link rel="preload" as="font" crossorigin="crossorigin" type="font/woff2" 
+          href="./fonts/ptsansnarrow-bold.woff2">
+
+    <link rel="stylesheet" 
+          href="./css/main.css">
   </head>
  
-  <body>
-    <include src="./source/images/sprite.svg"></include>
+  <body class="page__body">
 
-    <h1>Barbershop Borodinsky Official | Schedule and book your visit online</h1>
+    <div class="visually-hidden">
+      <include src="./source/images/sprite.svg"></include>
+    </div>
+    
+    <header class="page-header">
+      <div class="page-header__logotype">
+        <a class="page-header__logotype-link" href="index.html">
+          <picture class="page-header__logotype-picture">
+            <source media="(min-width: 1200px)" srcset="./images/logotype-borodinsky-desktop.svg">
+            <source media="(min-width: 768px)" srcset="./images/logotype-borodinsky-tablet.svg">        
+            <img src="./images/logotype-borodinsky-mobile.svg" width="226" height="30" alt="Barbershop Borodinsky Logotype">
+          </picture>  
+        </a>
+      </div>
+
+      <nav class="main-nav  page-header__main-nav">
+        <input class="main-nav__input-checkbox" id="is-main-nav-opened" type="checkbox">
+
+        <div class="main-nav__mobile">
+          <a class="main-nav__link  main-nav__mobile-link" href="">Booking</a>
+          <label class="main-nav__toggle" for="is-main-nav-opened">
+            <svg class="main-nav__toggle-icon" width="36" height="18">
+              <use class="icon-burger" xlink:href="#icon-nav-burger"></use>
+              <use class="icon-close" xlink:href="#icon-nav-close"></use>
+            </svg>
+            Open menu
+          </label>
+        </div>
+
+        <div class="main-nav__wrapper">
+          <div class="main-nav__menu">        
+            <ul class="main-nav__list  main-nav__site-list"> 
+              <li class="main-nav__item  main-nav__site-item">
+                <a class="main-nav__link  main-nav__site-link  main-nav__site-link_current" href="index.html">Barbershop</a>
+              </li>
+              <li class="main-nav__item  main-nav__site-item">
+                <a class="main-nav__link  main-nav__site-link" href="portfolio.html">Our Portfolio</a>
+              </li>
+              <li class="main-nav__item  main-nav__site-item">
+                <a class="main-nav__link  main-nav__site-link" href="booking.html">Booking</a>
+              </li>
+              <li class="main-nav__item  main-nav__site-item">
+                <a class="main-nav__link  main-nav__site-link" href="">Contacts</a>
+              </li>
+              <li class="main-nav__item  main-nav__site-item">
+                <a class="main-nav__link  main-nav__site-link" href="https://github.com/fuckhtml">Github</a>
+              </li>
+            </ul>
+
+            <ul class="main-nav__list  main-nav__user-list">
+              <li class="main-nav__item  main-nav__user-item">
+                <a class="main-nav__link  main-nav__icon-link  main-nav__user-link" href="">
+                  <svg class="main-nav__icon" width="16" height="16">
+                    <use xlink:href="#icon-nav-login"></use>
+                  </svg>
+                  Login
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+
+    <main class="page__main">
+
+      <h1 class="visually-hidden">Barbershop Borodinsky Official | Schedule and Book Your Visit Online</h1>
+
+      <section class="stats">
+        <div class="stats__wrapper">
+          <header class="stats__header">
+            <h2 class="visually-hidden">Our Statistics</h2>
+            <p class="stats__title">Haircut here <br>is profitable!</p>
+            <p class="stats__intro">Man's haircut requires prescise approach. <br>Consider our statistics.</p>
+            <p class="stats__legend  stats__legend--top">* — the given data is false</p>
+          </header>
+
+          <dl class="stats__list">
+            <div class="stats__item">
+              <dt class="stats__field">Dollars is the<br> average price</dt>
+              <dd class="stats__value">45 *</dd>              
+            </div>
+
+            <div class="stats__item">
+              <dt class="stats__field">Barber's spent <br>time in seconds</dt>
+              <dd class="stats__value">7 200</dd>              
+            </div>
+
+            <div class="stats__item">
+              <dt class="stats__field">Your hair <br>are cut</dt>
+              <dd class="stats__value">90 000</dd>              
+            </div>
+
+            <div class="stats__item">
+              <dt class="stats__field">Likes and <br>comments</dt>
+              <dd class="stats__value">500 000 *</dd>              
+            </div>
+          </dl>
+
+          <p class="stats__legend  stats__legend--bottom">* — the given data is false</p>
+        </div>
+      </section> 
+
+    </main>
+
+
+    <footer class="page-footer">
+
+    </footer>
+
+
+    <section class="modal">
+
+    </section>
+
 
     <script defer src="./js/main.js"></script>
+
+
   </body>
 </html>
