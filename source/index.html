@@ -3,7 +3,7 @@
 
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" 
+    <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0">
 
     <title>Barbershop Borodinsky Official | Schedule and book your visit online</title>
@@ -11,29 +11,29 @@
     <meta name="keywords" content="">
     <meta name="robots" content="">
 
-    <link rel="preload" as="font" crossorigin="crossorigin" type="font/woff2" 
+    <link rel="preload" as="font" crossorigin="crossorigin" type="font/woff2"
           href="./fonts/ptsansnarrow-regular.woff2">
-    <link rel="preload" as="font" crossorigin="crossorigin" type="font/woff2" 
+    <link rel="preload" as="font" crossorigin="crossorigin" type="font/woff2"
           href="./fonts/ptsansnarrow-bold.woff2">
 
-    <link rel="stylesheet" 
+    <link rel="stylesheet"
           href="./css/main.css">
   </head>
- 
-  <body class="page__body">
+
+  <body class="page__body  page__body--dark">
 
     <div class="visually-hidden">
       <include src="./source/images/sprite.svg"></include>
     </div>
-    
+
     <header class="page-header">
       <div class="page-header__logotype">
         <a class="page-header__logotype-link" href="index.html">
           <picture class="page-header__logotype-picture">
             <source media="(min-width: 1200px)" srcset="./images/logotype-borodinsky-desktop.svg">
-            <source media="(min-width: 768px)" srcset="./images/logotype-borodinsky-tablet.svg">        
+            <source media="(min-width: 768px)" srcset="./images/logotype-borodinsky-tablet.svg">
             <img src="./images/logotype-borodinsky-mobile.svg" width="226" height="30" alt="Barbershop Borodinsky Logotype">
-          </picture>  
+          </picture>
         </a>
       </div>
 
@@ -52,8 +52,8 @@
         </div>
 
         <div class="main-nav__wrapper">
-          <div class="main-nav__menu">        
-            <ul class="main-nav__list  main-nav__site-list"> 
+          <div class="main-nav__menu">
+            <ul class="main-nav__list  main-nav__site-list">
               <li class="main-nav__item  main-nav__site-item">
                 <a class="main-nav__link  main-nav__site-link  main-nav__site-link_current" href="index.html">Barbershop</a>
               </li>
@@ -97,34 +97,97 @@
             <h2 class="visually-hidden">Our Statistics</h2>
             <p class="stats__title">Haircut here <br>is profitable!</p>
             <p class="stats__intro">Man's haircut requires prescise approach. <br>Consider our statistics.</p>
-            <p class="stats__legend  stats__legend--top">* — the given data is false</p>
+            <p class="stats__legend  stats__legend--top">* — the given data is not real</p>
           </header>
 
           <dl class="stats__list">
             <div class="stats__item">
               <dt class="stats__field">Dollars is the<br> average price</dt>
-              <dd class="stats__value">45 *</dd>              
+              <dd class="stats__value">45 *</dd>
             </div>
 
             <div class="stats__item">
               <dt class="stats__field">Barber's spent <br>time in seconds</dt>
-              <dd class="stats__value">7 200</dd>              
+              <dd class="stats__value">7 200</dd>
             </div>
 
             <div class="stats__item">
               <dt class="stats__field">Your hair <br>are cut</dt>
-              <dd class="stats__value">90 000</dd>              
+              <dd class="stats__value">90 000</dd>
             </div>
 
             <div class="stats__item">
               <dt class="stats__field">Likes and <br>comments</dt>
-              <dd class="stats__value">500 000 *</dd>              
+              <dd class="stats__value">500 000 *</dd>
             </div>
           </dl>
 
-          <p class="stats__legend  stats__legend--bottom">* — the given data is false</p>
+          <p class="stats__legend  stats__legend--bottom">* — the given data is not real</p>
         </div>
-      </section> 
+      </section>
+
+      <section class="advantages">
+        <h2 class="visually-hidden">Our advantages</h2>
+
+        <div class="advantages__wrapper">
+          <input class="visually-hidden"
+                 type="radio"
+                 name="advantages"
+                 value="advantages-1">
+          <input class="visually-hidden"
+                 type="radio"
+                 name="advantages"
+                 value="advantages-2">
+          <input class="visually-hidden"
+                 type="radio"
+                 name="advantages"
+                 value="advantages-3">
+
+          <div class="advantages__list">
+            <div class="advantages__item">
+              <h3 class="advantages__title">Quickly</h3>
+              <img class="advantages__illustration"
+                   src="images/illustration-advantage-1.svg"
+                   width="95" height="94">
+              <p class="advantages__description">
+                We do our job quickly! Two hours will fly by and you are the lucky owner of a stylish haircut-minute
+              </p>
+            </div>
+            <div class="advantages__item">
+              <h3 class="advantages__title">Cool</h3>
+              <img class="advantages__illustration"
+                   src="images/illustration-advantage-2.svg"
+                   width="95" height="94">
+              <p class="advantages__description">
+                Forget how you cut your hair before. We will make you a football or movie star. In any case, externally.
+              </p>
+            </div>
+            <div class="advantages__item">
+              <h3 class="advantages__title">Expensive</h3>
+              <img class="advantages__illustration"
+                   src="images/illustration-advantage-3.svg"
+                   width="95" height="94">
+              <p class="advantages__description">
+                Our masters - professionals in their field cannot be cheap. Plus, doesn't the price give a certain status?              </p>
+            </div>
+          </div>
+
+          <div class="advantages__toggles">
+            <label class="advantages__toggle"
+                   for="advantages-1">
+              Quickly
+            </label>
+            <label class="advantages__toggle"
+                   for="advantages-1">
+              Cool
+            </label>
+            <label class="advantages__toggle"
+                   for="advantages-1">
+              Expensive
+            </label>
+          </div>
+        </div>
+      </section>
 
     </main>
 

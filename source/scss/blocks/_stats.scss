@@ -1,5 +1,5 @@
-@import './../tools/_variables.scss';
-@import './../tools/_mixins.scss';
+@import './../tools/_variables';
+@import './../tools/_mixins';
 
 
 //  palette | grey colors
@@ -13,20 +13,12 @@ $palette-2-color-6: $palette-2-color-6; // #777777;
 $color-title: white;
 $color-background: $palette-2-color-3;
 
-.stats {
-  background-color: $color-background
-}
-
 .stats__wrapper {
   @include wrapper;
-
-  @include grid-template;
 }
 
 .stats__header {
   padding: 28px 20px;
-
-  text-align: center;
 
   background-color: white;
 }
@@ -62,6 +54,8 @@ $color-background: $palette-2-color-3;
 .stats__list {
   margin: 0;
 
+  display: flex;
+  flex-direction: column;
   color: white;
 }
 
@@ -70,6 +64,7 @@ $color-background: $palette-2-color-3;
   flex-direction: row-reverse;
   justify-content: space-between;
 
+  box-sizing: border-box;
   padding: 20px;
 }
 
@@ -86,7 +81,7 @@ $color-background: $palette-2-color-3;
   background-color: #4D4D4D;
 }
 
-.stats__field {  
+.stats__field {
   text-align: right;
 
   font-weight: 400;
@@ -109,13 +104,106 @@ $color-background: $palette-2-color-3;
   }
 
   .stats__legend--bottom {
+    margin: 0;
+
     display: block;
+    padding: 20px 0;
+
+    background-color: #242424;
+    opacity: 1;
+  }
+
+  .stats__header {
+    text-align: center;
   }
 }
 
 @media (min-width: $tablet-width) {
   .stats__wrapper {
-    // margin-top: -186px;
+    margin-top: -186px;
+  }
+
+  .stats__header {
+    padding: 32px 34px 32px 30px;
+
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .stats__title {
+    margin-bottom: 24px;
+
+    box-sizing: border-box;
+    width: 50%;
+
+    font-size: 40px;
+    line-height: 40px;
+  }
+
+  .stats__intro {
+    box-sizing: border-box;
+
+    width: 50%;
+    padding-left: 34px;
+    font-size: 20px;
+    line-height: 27px;
+  }
+
+  .stats__intro br {
+    display: none;
+  }
+
+  .stats__legend {
+    margin: 0;
+    font-size: 20px;
+    line-height: 20px;
+  }
+
+  .stats__list {
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    background-color: #353535;
+  }
+
+  .stats__item {
+    flex-direction: column-reverse;
+
+    width: 50%;
+    padding-top: 25px;
+    padding-bottom: 30px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .stats__field {
+    font-size: 20px;
+    line-height: 20px;
+    text-align: left;
+  }
+
+  .stats__field br {
+    display: none;
+  }
+
+  .stats__value {
+    margin-bottom: 12px;
+
+    font-size: 72px;
+    line-height: 72px;
+  }
+
+  .stats__item:nth-child(1) {
+    background-color: #3F3F3F;
+  }
+  .stats__item:nth-child(2) {
+    background-color: #4E4E4E;
+  }
+  .stats__item:nth-child(3) {
+    background-color: #353535;
+  }
+  .stats__item:nth-child(4) {
+    background-color: #3F3F3F;
   }
 
   .stats__legend--top {
@@ -123,32 +211,39 @@ $color-background: $palette-2-color-3;
   }
 }
 
-/*
 
-      <section class="stats">
-        <div class="stats__wrapper">
-          <header class="stats__header">
-            <h2 class="visually-hidden">Our Statistics</h2>
-            <p class="stats__title">Haircut here <br>is profitable!</p>
-            <p class="stats__intro">Man's haircut requires prescise approach. Consider our statistics.</p>
-            <p class="stats__legend  stats__legend--top">* — the given data is false</p>
-          </header>
+@media (min-width: $desktop-width) {
+  .stats__wrapper {
+    margin-top: -161px;
 
-          <dl class="stats__list">
-            <dt class="stats__field">The average price</dt>
-            <dd class="stats__value">45*</dd>
+    display: flex;
+  }
 
-            <dt class="stats__field">Master's spent seconds</dt>
-            <dd class="stats__value">7 200</dd>
+  .stats__header {
+    width: 34%;
+    padding-right: 0;
 
-            <dt class="stats__field">Cut hair</dt>
-            <dd class="stats__value">90 000</dd>
+    flex-direction: column;
+  }
 
-            <dt class="stats__field">Likes and comments</dt>
-            <dd class="stats__value">500 000*</dd>
-          </dl>
+  .stats__title {
+    width: 100%;
+    padding-right: 85px;
+    margin-bottom: 38px;
+  }
 
-          <p class="stats__legend  stats__legend--bottom">* — the given data is false</p>
-        </div>
-      </section> 
-      */
+  .stats__intro {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 85px;
+    margin-bottom: auto;
+  }
+
+  .stats__intro br {
+    display: none;
+  }
+
+  .stats__list {
+    width: 66%;
+  }
+}

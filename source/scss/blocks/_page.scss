@@ -1,5 +1,5 @@
-@import './../tools/_variables.scss';
-@import './../tools/_mixins.scss';
+@import './../tools/_variables';
+@import './../tools/_mixins';
 
 .page__body {
   margin: 0;
@@ -12,7 +12,11 @@
   line-height: 27px;
   font-weight: 400;
  
-  background-color: $bg-color-2;
+  background-color: #f8f5f2;
 
-  overflow: hidden;
+  overflow-x: hidden;
+}
+
+.page__body--dark {
+  background-color: #353535;
 }
